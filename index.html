@@ -3,77 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lins Training</title>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Lins Training - Avaliação de Performance</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        body { background-color: #f3f4f6; font-family: 'Inter', sans-serif; }
+        .header-black { background-color: #000; color: #fff; }
     </style>
 </head>
 <body>
-    <div id="root"></div>
-    <script type="text/babel">
-        const { useState } = React;
-        const { User, ChevronRight, ChevronLeft, Download, Zap, HeartPulse } = lucide;
+    <div class="header-black p-6 text-center shadow-lg">
+        <h1 class="text-3xl font-bold tracking-widest">LINS TRAINING</h1>
+        <p class="text-sm uppercase tracking-wider opacity-80">Performance & Legacy</p>
+    </div>
 
-        const LinsTrainingApp = () => {
-            const [etapa, setEtapa] = useState(1);
-            const [dados, setDados] = useState({ nome: '' });
-
-            return (
-                <div className="max-w-md mx-auto bg-white min-h-screen shadow-lg pb-20">
-                    <div className="bg-black text-white p-6 text-center">
-                        <h1 className="text-2xl font-bold tracking-widest uppercase">LINS TRAINING</h1>
-                        <p className="text-xs text-gray-400 mt-1 uppercase tracking-widest">Avaliação de Performance</p>
-                    </div>
-
-                    <div className="p-6">
-                        {etapa === 1 && (
-                            <div className="space-y-4">
-                                <h2 className="text-xl font-semibold flex items-center gap-2 border-b pb-2 text-black"><User size={20}/> Dados do Atleta</h2>
-                                <input className="w-full border p-3 rounded-lg text-black bg-white" placeholder="Nome Completo" onChange={e => setDados({...dados, nome: e.target.value})} />
-                                <button onClick={() => setEtapa(2)} className="w-full bg-black text-white p-4 rounded-xl font-bold flex justify-center items-center gap-2 text-lg">Próximo <ChevronRight size={20}/></button>
-                            </div>
-                        )}
-
-                        {etapa === 2 && (
-                            <div className="space-y-4">
-                                <h2 className="text-xl font-semibold flex items-center gap-2 border-b pb-2 text-red-600"><HeartPulse size={20}/> Saúde e Composição</h2>
-                                <p className="text-sm text-gray-500 italic">Módulo 1: Saúde em primeiro lugar.</p>
-                                <input className="w-full border p-3 rounded-lg text-black" placeholder="% de Gordura Corporal" type="number" />
-                                <input className="w-full border p-3 rounded-lg text-black" placeholder="Massa Muscular (kg)" type="number" />
-                                <div className="flex gap-2">
-                                    <button onClick={() => setEtapa(1)} className="w-1/3 border p-4 rounded-xl font-bold text-gray-600 bg-gray-50">Voltar</button>
-                                    <button onClick={() => setEtapa(3)} className="w-2/3 bg-black text-white p-4 rounded-xl font-bold text-lg">Próximo</button>
-                                </div>
-                            </div>
-                        )}
-
-                        {etapa === 3 && (
-                            <div className="space-y-4">
-                                <h2 className="text-xl font-semibold flex items-center gap-2 border-b pb-2 text-yellow-600"><Zap size={20}/> Performance</h2>
-                                <p className="text-sm text-gray-500 italic">Módulo 2: Potência e Resultados.</p>
-                                <input className="w-full border p-3 rounded-lg text-black" placeholder="Força Isométrica (kgf)" type="number" />
-                                <input className="w-full border p-3 rounded-lg text-black" placeholder="Salto Vertical (cm)" type="number" />
-                                <div className="flex gap-2">
-                                    <button onClick={() => setEtapa(2)} className="w-1/3 border p-4 rounded-xl font-bold text-gray-600 bg-gray-50">Voltar</button>
-                                    <button onClick={() => alert('Relatório Gerado!')} className="w-2/3 bg-green-600 text-white p-4 rounded-xl font-bold flex justify-center items-center gap-2 text-lg">Gerar <Download size={20}/></button>
-                                </div>
-                            </div>
-                        )}
-                    </div>
+    <div class="max-w-2xl mx-auto mt-8 p-6 bg-white rounded-xl shadow-md">
+        <h2 class="text-xl font-semibold border-b pb-2 mb-4">Avaliação de Atleta</h2>
+        
+        <div class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Nome do Atleta</label>
+                <input type="text" class="w-full border p-3 rounded-lg mt-1" placeholder="Ex: João Silva">
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Potência (W)</label>
+                    <input type="number" class="w-full border p-3 rounded-lg mt-1">
                 </div>
-            );
-        };
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Velocidade (km/h)</label>
+                    <input type="number" class="w-full border p-3 rounded-lg mt-1">
+                </div>
+            </div>
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<LinsTrainingApp />);
-    </script>
+            <button onclick="alert('Relatório Gerado com Sucesso!')" class="w-full bg-black text-white p-4 rounded-lg font-bold mt-6 hover:bg-gray-800 transition">
+                GERAR RELATÓRIO DE PERFORMANCE
+            </button>
+        </div>
+    </div>
 </body>
 </html>
-
             
