@@ -3,44 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lins Training - Avaliação de Performance</title>
+    <title>Lins Training - High Performance</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #f3f4f6; font-family: 'Inter', sans-serif; }
-        .header-black { background-color: #000; color: #fff; }
+        body { background-color: #0b0b0b; color: #e5e5e5; font-family: 'Inter', sans-serif; }
+        .gold-border { border-color: #c5a059; }
+        .btn-gold { background-color: #c5a059; color: #000; }
     </style>
 </head>
 <body>
-    <div class="header-black p-6 text-center shadow-lg">
-        <h1 class="text-3xl font-bold tracking-widest">LINS TRAINING</h1>
-        <p class="text-sm uppercase tracking-wider opacity-80">Performance & Legacy</p>
-    </div>
+    <header class="p-6 text-center border-b gold-border bg-black">
+        <h1 class="text-3xl font-bold tracking-tighter text-white">LINS TRAINING</h1>
+        <p class="text-xs uppercase tracking-widest text-gray-400">Identity & Legacy</p>
+    </header>
 
-    <div class="max-w-2xl mx-auto mt-8 p-6 bg-white rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold border-b pb-2 mb-4">Avaliação de Atleta</h2>
-        
-        <div class="space-y-4">
-            <div>
-                <label class="block text-sm font-medium text-gray-700">Nome do Atleta</label>
-                <input type="text" class="w-full border p-3 rounded-lg mt-1" placeholder="Ex: João Silva">
-            </div>
-            
-            <div class="grid grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Potência (W)</label>
-                    <input type="number" class="w-full border p-3 rounded-lg mt-1">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Velocidade (km/h)</label>
-                    <input type="number" class="w-full border p-3 rounded-lg mt-1">
-                </div>
-            </div>
-
-            <button onclick="alert('Relatório Gerado com Sucesso!')" class="w-full bg-black text-white p-4 rounded-lg font-bold mt-6 hover:bg-gray-800 transition">
-                GERAR RELATÓRIO DE PERFORMANCE
-            </button>
+    <main class="max-w-4xl mx-auto p-6">
+        <!-- Navegação de Módulos -->
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-2 mb-8 text-center text-xs">
+            <div class="p-2 border gold-border rounded">MÓDULO 1<br>Identidade</div>
+            <div class="p-2 border border-gray-700 rounded opacity-50">MÓDULO 2<br>Potência</div>
+            <div class="p-2 border border-gray-700 rounded opacity-50">MÓDULO 3<br>Velocidade</div>
+            <div class="p-2 border border-gray-700 rounded opacity-50">MÓDULO 4<br>Data</div>
+            <div class="p-2 border border-gray-700 rounded opacity-50 bg-gray-900 text-white">RELATÓRIO</div>
         </div>
-    </div>
+
+        <!-- Área de Input -->
+        <section class="bg-zinc-900 p-8 rounded-lg border border-gray-800 shadow-2xl">
+            <h2 class="text-2xl font-semibold mb-6 text-white border-l-4 gold-border pl-4">Módulo 1: Cadastro e Identidade</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium mb-2">Nome do Atleta / Aluno</label>
+                    <input type="text" class="w-full bg-black border border-gray-700 p-4 rounded text-white focus:outline-none focus:ring-1 focus:ring-[#c5a059]" placeholder="Ex: Atleta de Elite">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Categoria/Posição</label>
+                        <input type="text" class="w-full bg-black border border-gray-700 p-4 rounded text-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Data da Avaliação</label>
+                        <input type="date" class="w-full bg-black border border-gray-700 p-4 rounded text-white">
+                    </div>
+                </div>
+
+                <div class="pt-6 flex justify-between">
+                    <button class="px-8 py-4 border border-gray-600 rounded text-gray-400 cursor-not-allowed">Anterior</button>
+                    <button onclick="alert('Próximo Módulo Carregando...')" class="px-8 py-4 btn-gold rounded font-bold hover:brightness-110 transition">Próximo Módulo</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Botão de Atalho para o Relatório -->
+        <div class="mt-8 text-center">
+            <button onclick="alert('Gerando Relatório de Performance LINS TRAINING...')" class="text-[#c5a059] underline text-sm">Pular para Relatório Final</button>
+        </div>
+    </main>
 </body>
 </html>
-            
