@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lins Training - Avaliação de Performance</title>
-    <!-- Bibliotecas Necessárias -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -14,11 +13,63 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
-        // Todo o sistema de avaliação e os novos ajustes visuais estão aqui[span_12](start_span)[span_12](end_span)[span_13](start_span)[span_13](end_span)
-        // Títulos: Avaliação de Performance[span_14](start_span)[span_14](end_span)
-        // Blocos: Saúde (IMC/Gordura/PA) e Performance (Força/Saltos)[span_15](start_span)[span_15](end_span)
-        
-        // (O código completo que unifica seus arquivos segue aqui...)
+        // A mágica da avaliação Lins Training acontece aqui!
     </script>
 </body>
 </html>
+const LinsTrainingApp = () => {
+            const [etapa, setEtapa] = React.useState(1);
+            const [dados, setDados] = React.useState({ nome: '' });
+            const { User, ChevronRight, ChevronLeft, Download, Zap, HeartPulse } = lucide;
+
+            const proxima = () => setEtapa(etapa + 1);
+            const anterior = () => setEtapa(etapa - 1);
+
+            return (
+                <div className="max-w-md mx-auto bg-white min-h-screen shadow-lg pb-20">
+                    <div className="bg-black text-white p-6 text-center">
+                        <h1 className="text-2xl font-bold tracking-widest uppercase text-white">LINS TRAINING</h1>
+                        <p className="text-xs text-gray-400 mt-1 uppercase tracking-widest">Avaliação de Performance</p>
+                    </div>
+
+                    <div className="p-6">
+                        {etapa === 1 && (
+                            <div className="space-y-4">
+                                <h2 className="text-xl font-semibold flex items-center gap-2 border-b pb-2 text-black"><User size={20}/> Dados do Atleta</h2>
+                                <input className="w-full border p-3 rounded-lg text-black bg-white" placeholder="Nome Completo" onChange={e => setDados({...dados, nome: e.target.value})} />
+                                <button onClick={proxima} className="w-full bg-black text-white p-4 rounded-xl font-bold flex justify-center items-center gap-2">Próximo <ChevronRight size={20}/></button>
+                            </div>
+                        )}
+
+                        {etapa === 2 && (
+                            <div className="space-y-4">
+                                <h2 className="text-xl font-semibold flex items-center gap-2 border-b pb-2 text-red-600"><HeartPulse size={20}/> Saúde e Composição</h2>
+                                <p className="text-sm text-gray-500 italic">Saúde em primeiro lugar.</p>
+                                <input className="w-full border p-3 rounded-lg text-black bg-white" placeholder="% de Gordura Corporal" type="number" />
+                                <input className="w-full border p-3 rounded-lg text-black bg-white" placeholder="Massa Muscular (kg)" type="number" />
+                                <div className="flex gap-2">
+                                    <button onClick={anterior} className="w-1/3 border p-4 rounded-xl font-bold text-gray-600 bg-gray-100">Voltar</button>
+                                    <button onClick={proxima} className="w-2/3 bg-black text-white p-4 rounded-xl font-bold">Próximo</button>
+                                </div>
+                            </div>
+                        )}
+
+                        {etapa === 3 && (
+                            <div className="space-y-4">
+                                <h2 className="text-xl font-semibold flex items-center gap-2 border-b pb-2 text-yellow-600"><Zap size={20}/> Performance</h2>
+                                <p className="text-sm text-gray-500 italic">Potência e Resultados.</p>
+                                <input className="w-full border p-3 rounded-lg text-black bg-white" placeholder="Força Isométrica (kgf)" type="number" />
+                                <input className="w-full border p-3 rounded-lg text-black bg-white" placeholder="Salto Vertical (cm)" type="number" />
+                                <div className="flex gap-2">
+                                    <button onClick={anterior} className="w-1/3 border p-4 rounded-xl font-bold text-gray-600 bg-gray-100">Voltar</button>
+                                    <button onClick={() => alert('Relatório Gerado!')} className="w-2/3 bg-green-600 text-white p-4 rounded-xl font-bold flex justify-center items-center gap-2">Gerar <Download size={20}/></button>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<LinsTrainingApp />);
